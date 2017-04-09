@@ -27,6 +27,10 @@ Unfortunately, we have to install SOME things manually :(
 
 ## init-mac.sh
 
-To get started, we will need `git`, and to get `git`, we will want to have homebrew installed. Fear not, head on over to `init-mac.sh`, copy the contents, and paste them into your terminal.
+To get started, we will need `git`, and to get `git`, we will want to have homebrew installed. Fear not, head on over to `init-mac.sh`, click `Raw`, save the file onto your computer, and run it.
+
+```
+sh ~/Downloads/init-mac.sh
+```
 
 Next, clone this repository.
