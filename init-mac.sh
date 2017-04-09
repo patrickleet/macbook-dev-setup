@@ -3,3 +3,6 @@
 
 # install git
 brew install git
+
+# install ansible
+brew install ansible
