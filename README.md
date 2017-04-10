@@ -25,3 +25,4 @@ The following tools will be installed
 * n (node version manager)
 * meta
 * Docker for Mac
+* Slack
