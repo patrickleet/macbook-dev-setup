@@ -26,3 +26,4 @@ The following tools will be installed
 * meta
 * Docker for Mac
 * Slack
+* Spotify
