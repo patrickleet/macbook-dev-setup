@@ -22,9 +22,17 @@ brew tap caskroom/cask
 
 brew cask install google-chrome
 brew cask install docker
+brew cask install kitematic
 brew cask install hyper
+brew cask install visual-studio-code
 brew install terraform
 brew install packer
+brew install node
+
+npm install -g n
+n use latest
+
+npm install -g meta
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
