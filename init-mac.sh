@@ -46,7 +46,6 @@ echo "For n to work properly, you need to own /usr/local/"
 sudo chown -R `whoami` /usr/local/
 
 npm install -g n hpm-cli meta
-hpm i hyperzsh
 
 n use latest
 
