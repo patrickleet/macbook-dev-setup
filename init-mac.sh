@@ -27,6 +27,7 @@ brew cask install docker
 brew cask install kitematic
 brew cask install hyper
 brew cask install visual-studio-code
+brew cask install slack
 brew install terraform
 brew install packer
 brew install node
