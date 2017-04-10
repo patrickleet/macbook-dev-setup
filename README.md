@@ -20,6 +20,7 @@ The following tools will be installed
 * terraform
 * Hyper
 * VSCode
+* Vagrant
 * node
 * npm
 * n (node version manager)
