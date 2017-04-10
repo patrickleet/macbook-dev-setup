@@ -22,5 +22,6 @@ The following tools will be installed
 * VSCode
 * node
 * npm
+* n (node version manager)
 * meta
 * Docker for Mac
