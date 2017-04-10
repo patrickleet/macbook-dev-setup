@@ -31,6 +31,9 @@ brew install terraform
 brew install packer
 brew install node
 
+echo "For n to work properly, you need to own /usr/local/"
+sudo chown -R `whoami` /usr/local/
+
 npm install -g n
 n use latest
 
