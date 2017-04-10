@@ -22,6 +22,7 @@ brew tap caskroom/cask
 
 brew cask install google-chrome
 brew cask install docker
+brew cask install hyper
 brew install terraform
 brew install packer
 
