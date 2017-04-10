@@ -36,10 +36,10 @@ brew install node
 echo "For n to work properly, you need to own /usr/local/"
 sudo chown -R `whoami` /usr/local/
 
-npm install -g n
-n use latest
+npm install -g n hpm-cli meta
+hpm i hyperzsh
 
-npm install -g meta
+n use latest
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
