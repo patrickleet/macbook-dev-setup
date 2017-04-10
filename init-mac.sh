@@ -37,7 +37,6 @@ brew cask install kitematic
 brew cask install hyper
 brew cask install visual-studio-code
 brew cask install vagrant
-brew cask install slack
 brew cask install spotify
 brew install terraform
 brew install packer
