@@ -19,6 +19,15 @@ ssh-keygen -t rsa -b 4096 -C "$email"
 echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_rsa" | tee ~/.ssh/config
 eval "$(ssh-agent -s)"
 
+# zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+echo "Add zsh-autosuggestions to ~/.zshrc to the plugins list\n"
+echo "    plugins=(git zsh-autosuggestions)"
+
+vi ~/.zshrc
+
 # caskroom https://caskroom.github.io
 brew tap caskroom/cask
 
@@ -41,17 +50,10 @@ hpm i hyperzsh
 
 n use latest
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
-echo "Add zsh-autosuggestions to ~/.zshrc to the plugins list\n"
-echo "    plugins=(git zsh-autosuggestions)"
-
-vi ~/.zshrc
-
 # setup dev directory
 mkdir ~/dev/
 
 pbcopy < ~/.ssh/id_rsa.pub
 echo "Add the generated SSH key to your GitHub account. It has been copied to your clipboard"
 echo "https://github.com/settings/keys"
+echo "You may have to change the shell used in Hyper by modifying ~/.hyper.js to /bin/zsh"
