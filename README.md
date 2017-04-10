@@ -9,7 +9,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/patrickleet/macbook-dev-se
 
 # Development Setup
 
-By the end of this, you will have the following tools installed. These are tools I use frequently, and may not be the right set of tools for everyone.
+The following tools will be installed
 
 * homebrew
 * git
