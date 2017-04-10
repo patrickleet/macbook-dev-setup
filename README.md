@@ -26,5 +26,13 @@ The following tools will be installed
 * n (node version manager)
 * meta
 * Docker for Mac
-* Slack
 * Spotify
+
+# App Store
+
+I recommend installing the following from the App Store
+
+* Slack
+* XCode
+* Bear
+* Daisy Disk
