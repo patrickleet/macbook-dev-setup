@@ -13,7 +13,6 @@ By the end of this, you will have the following tools installed. These are tools
 
 * homebrew
 * git
-* ansible
 * zsh
 * ohmyzsh
 * zsh-autocomplete
