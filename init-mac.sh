@@ -23,7 +23,7 @@ eval "$(ssh-agent -s)"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
-sed 's/git$/git\'$'\n  zsh-autosuggestions/g' ~/.zshrc >~/temp && mv ~/temp ~/.zshrc
+sed -i .bak 's/git$/git\'$'\n  zsh-autosuggestions/g' ~/.zshrc
 
 # caskroom https://caskroom.github.io
 brew tap caskroom/cask
