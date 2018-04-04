@@ -42,8 +42,8 @@ brew install terraform
 brew install packer
 brew install node
 
-echo "For n to work properly, you need to own /usr/local/"
-sudo chown -R `whoami` /usr/local/
+echo "For n to work properly, you need to own homebrew stuff"
+sudo chown -R $(whoami) $(brew --prefix)/*
 
 npm install -g n hpm-cli meta
 
