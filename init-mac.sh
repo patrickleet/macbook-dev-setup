@@ -35,6 +35,7 @@ brew cask install hyper
 brew cask install visual-studio-code
 brew cask install vagrant
 brew cask install spotify
+brew cask install minikube
 brew install terraform
 brew install packer
 brew install node
