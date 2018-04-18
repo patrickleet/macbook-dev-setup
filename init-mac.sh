@@ -41,6 +41,7 @@ brew install terraform
 brew install packer
 brew install node
 brew install python
+brew install jq
 
 echo "For n to work properly, you need to own homebrew stuff"
 sudo chown -R $(whoami) $(brew --prefix)/*
