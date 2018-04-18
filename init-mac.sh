@@ -40,6 +40,7 @@ brew cask install virtualbox
 brew install terraform
 brew install packer
 brew install node
+brew install python
 
 echo "For n to work properly, you need to own homebrew stuff"
 sudo chown -R $(whoami) $(brew --prefix)/*
@@ -54,10 +55,7 @@ mkdir ~/dev/
 # set up vscode
 code --install-extension PeterJausovec.vscode-docker --install-extension dbaeumer.vscode-eslint --install-extension dzannotti.vscode-babel-coloring --install-extension ilich8086.classic-asp --install-extension marcostazi.VS-code-vagrantfile --install-extension mauve.terraform --install-extension ms-vscode.PowerShell --install-extension neilding.language-liquid --install-extension secanis.jenkinsfile-support
 
-curl -O https://bootstrap.pypa.io/get-pip.py
-python3 get-pip.py --user
 pip3 install awscli --upgrade --user
-aws --version
 
 pbcopy < ~/.ssh/id_rsa.pub
 echo "Add the generated SSH key to your GitHub account. It has been copied to your clipboard"
