@@ -42,6 +42,7 @@ brew install packer
 brew install node
 brew install python
 brew install jq
+brew install kops
 
 echo "For n to work properly, you need to own homebrew stuff"
 sudo chown -R $(whoami) $(brew --prefix)/*
