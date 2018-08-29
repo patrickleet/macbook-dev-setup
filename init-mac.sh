@@ -37,6 +37,7 @@ brew cask install vagrant
 brew cask install spotify
 brew cask install minikube
 brew cask install virtualbox
+brew cask install google-cloud-sdk
 brew install terraform
 brew install packer
 brew install node
