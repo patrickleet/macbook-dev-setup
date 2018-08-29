@@ -61,7 +61,18 @@ n use latest
 mkdir ~/dev/
 
 # set up vscode
-code --install-extension PeterJausovec.vscode-docker --install-extension dbaeumer.vscode-eslint --install-extension dzannotti.vscode-babel-coloring --install-extension ilich8086.classic-asp --install-extension marcostazi.VS-code-vagrantfile --install-extension mauve.terraform --install-extension ms-vscode.PowerShell --install-extension neilding.language-liquid --install-extension secanis.jenkinsfile-support
+code --install-extension PeterJausovec.vscode-docker \
+     --install-extension marcostazi.VS-code-vagrantfile \
+     --install-extension mauve.terraform \
+     --install-extension secanis.jenkinsfile-support \
+     --install-extension formulahendry.code-runner \
+     --install-extension mikestead.dotenv \
+     --install-extension oderwat.indent-rainbow \
+     --install-extension orta.vscode-jest \
+     --install-extension jenkinsxio.vscode-jx-tools \
+     --install-extension mathiasfrohlich.kotlin \
+     --install-extension christian-kohler.npm-intellisense \
+     --install-extension sujan.code-blue
 
 pip3 install awscli --upgrade --user
 pip3 install invoke
