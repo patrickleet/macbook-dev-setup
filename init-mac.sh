@@ -43,6 +43,10 @@ brew install node
 brew install python
 brew install jq
 brew install kops
+brew install jx
+brew install kafka
+brew install tmux
+brew install tree
 
 echo "For n to work properly, you need to own homebrew stuff"
 sudo chown -R $(whoami) $(brew --prefix)/*
