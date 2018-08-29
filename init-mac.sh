@@ -27,6 +27,7 @@ sed -i .bak 's/git$/git\'$'\n  zsh-autosuggestions/g' ~/.zshrc
 
 # caskroom https://caskroom.github.io
 brew tap caskroom/cask
+brew tap jenkins-x/jx
 
 brew cask install google-chrome
 brew cask install docker
