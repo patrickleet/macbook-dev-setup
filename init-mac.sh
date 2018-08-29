@@ -42,6 +42,7 @@ brew install packer
 brew install node
 brew install python
 brew install jq
+brew install kubernetes-cli
 brew install kops
 brew install jx
 brew install kafka
