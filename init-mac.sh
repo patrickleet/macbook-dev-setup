@@ -79,9 +79,6 @@ code --install-extension PeterJausovec.vscode-docker \
 pip3 install awscli --upgrade --user
 pip3 install invoke
 
-brew install weaveworks/tap/eksctl
-brew install kubernetes-helm
-
 pbcopy < ~/.ssh/id_rsa.pub
 echo "Add the generated SSH key to your GitHub account. It has been copied to your clipboard"
 echo "https://github.com/settings/keys"
