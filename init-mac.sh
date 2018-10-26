@@ -1,6 +1,6 @@
 echo "Hello $(whoami)"
 
-mkdir /usr/local/var/homebrew
+mkdir -p /usr/local/var/homebrew
 sudo chown -R $(whoami) /usr/local/var/homebrew
 # install homebrew https://brew.sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
