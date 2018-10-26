@@ -21,8 +21,12 @@ ssh-keygen -t rsa -b 4096 -C "$email"
 echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_rsa" | tee ~/.ssh/config
 eval "$(ssh-agent -s)"
 
-# zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+{ # your 'try' block
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+} || { # your 'catch' block
+    echo 'Oh My Zsh like to exit for some reasons so this prevents it'
+}
+
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 sed -i .bak 's/git$/git\'$'\n  zsh-autosuggestions/g' ~/.zshrc
