@@ -153,6 +153,6 @@ echo "https://github.com/settings/keys"
 sleep 1
 sed -i .bak "s/shell:[[:space:]]'',$/shell: 'zsh',/g" ~/.hyper.js
 sleep 1
-echo "export PATH=$HOME/.jx/bin/:$PATH" >> ~/.zshrc
+echo "export PATH=\$HOME/.jx/bin/:\$PATH" >> ~/.zshrc
 sleep 1
 source ~/.zshrc
