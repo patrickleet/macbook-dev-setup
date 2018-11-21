@@ -138,5 +138,5 @@ echo "Copying your SSH key to your clipboard"
 pbcopy < ~/.ssh/id_rsa.pub
 echo "Add the generated SSH key to your GitHub account. It has been copied to your clipboard"
 echo "https://github.com/settings/keys"
-echo "You may have to change the shell used in Hyper by modifying ~/.hyper.js to /bin/zsh"
+sed -i .bak "s/shell:[[:space:]]'',$/shell: 'zsh',/g" ~/.hyper.js
 source ~/.zshrc
