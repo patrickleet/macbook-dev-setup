@@ -33,17 +33,20 @@ brew doctor
 #  Configure Git
 echo "Installing and configuring git"
 brew install git
+sleep 1
 git config --global --replace-all user.email "$email"
 git config --global --replace-all user.name "$username"
 
 # SSH Key
 echo "Generating an SSH Key - this will be added to your agent for you"
 ssh-keygen -t rsa -b 4096 -C "$email"
+sleep 1
 echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_rsa" | tee ~/.ssh/config
 eval "$(ssh-agent -s)"
 
 #  Configure ZSH
 echo "Configuring ZSH"
+sleep 1
 { # your 'try' block
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 } || { # your 'catch' block
@@ -52,6 +55,7 @@ echo "Configuring ZSH"
 
 # Configure ZSH  plugins
 echo "Configuring ZSH plugins"
+sleep 1
 {
     git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
@@ -65,6 +69,7 @@ echo "Configuring ZSH plugins"
 
 # caskroom https://caskroom.github.io
 echo "Installing Brew apps"
+sleep 1
 {
     brew tap caskroom/cask
     brew tap jenkins-x/jx
@@ -100,22 +105,27 @@ echo "For n to work properly, you need to own homebrew stuff"
 sudo chown -R $(whoami) $(brew --prefix)/*
 
 echo "Installing n"
+sleep 1
 npm install -g n
 
 # Use the latest version of Node
 echo "Using latest version of Node"
+sleep 1
 n use latest
 
 echo "Installing hyper term package manager and meta"
+sleep 1
 npm i -g hpm-cli meta
 
 
 # setup dev directory
 echo "Creating development directory at ~/dev"
+sleep 1
 mkdir -p ~/dev
 
 # set up vscode
 echo "Configure VS Code extensions"
+sleep 1
 code --install-extension PeterJausovec.vscode-docker \
      --install-extension marcostazi.VS-code-vagrantfile \
      --install-extension mauve.terraform \
@@ -131,12 +141,15 @@ code --install-extension PeterJausovec.vscode-docker \
 
 # awscli and invoke - kinda like make for python
 echo "installing awscli and invoke"
+sleep 1
 pip3 install awscli --upgrade --user
 pip3 install invoke
 
 echo "Copying your SSH key to your clipboard"
 pbcopy < ~/.ssh/id_rsa.pub
+sleep 1
 echo "Add the generated SSH key to your GitHub account. It has been copied to your clipboard"
 echo "https://github.com/settings/keys"
+sleep 1
 sed -i .bak "s/shell:[[:space:]]'',$/shell: 'zsh',/g" ~/.hyper.js
 source ~/.zshrc
