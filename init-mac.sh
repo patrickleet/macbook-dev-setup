@@ -96,6 +96,7 @@ sleep 1
     brew install kafka
     brew install tmux
     brew install tree
+    brew install kubectx
 } || {
     echo "One or more brew formulas failed to install"
 }
