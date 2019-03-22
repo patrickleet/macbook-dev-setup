@@ -138,7 +138,14 @@ code --install-extension PeterJausovec.vscode-docker \
      --install-extension jenkinsxio.vscode-jx-tools \
      --install-extension mathiasfrohlich.kotlin \
      --install-extension christian-kohler.npm-intellisense \
-     --install-extension sujan.code-blue
+     --install-extension sujan.code-blue \
+     --install-extension waderyan.gitblame \
+     --install-extension ms-vscode.go \
+     --install-extension in4margaret.compareit \
+     --install-extension andys8.jest-snippets \
+     --install-extension euskadi31.json-pretty-printer \
+     --install-extension yatki.vscode-surround \
+     --install-extension wmaurer.change-case
 
 # awscli and invoke - kinda like make for python
 echo "installing awscli and invoke"
