@@ -1,3 +1,5 @@
+ORIGINAL_USER=$(whoami)
+
 echo "Hello $(whoami),"
 sleep 1
 echo "I'm going to configure your computer now."
@@ -12,15 +14,14 @@ read -r email
 echo "Enter your full name (Ex. John Doe): "
 read -r username
 
-# check for homebrew
-echo "Checking if homebrew exists"
-command -v brew >/dev/null 2>&1 || { 
-    echo >&2 "I require foo but it's not installed."
-    echo "Installing homebrew now..." 
+if [ -x "$(command -v brew)" ]; then
+    echo "✔️ Homebrew installed"
+else
+    echo "Installing homebrew now..."
     mkdir -p /usr/local/var/homebrew
     sudo chown -R $(whoami) /usr/local/var/homebrew
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-}
+fi;
 
 sudo mkdir -p /usr/local/sbin
 sudo chown -R $(whoami) /usr/local/sbin
@@ -31,16 +32,20 @@ brew upgrade --cleanup
 brew doctor
 
 #  Configure Git
-echo "Installing and configuring git"
-brew install git
-sleep 1
+if [ -x "$(command -v brew)" ]; then
+    echo "✔️ git installed"
+else
+    echo "Installing git"
+    brew install git
+fi;
+
+echo "Setting global git config with email $email and username $username"
 git config --global --replace-all user.email "$email"
 git config --global --replace-all user.name "$username"
 
 # SSH Key
 echo "Generating an SSH Key - this will be added to your agent for you"
 ssh-keygen -t rsa -b 4096 -C "$email"
-sleep 1
 echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_rsa" | tee ~/.ssh/config
 eval "$(ssh-agent -s)"
 
@@ -58,11 +63,14 @@ echo "Configuring ZSH plugins"
 sleep 1
 {
     git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    echo "plugins+=(zsh-autosuggestions)" >> ~/.zshrc
+
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    git clone https://github.com/Dbz/zsh-kubernetes ~/.oh-my-zsh/custom/plugins/zsh-kubernetes
-    sed -i .bak 's/git$/git\'$'\n  zsh-autosuggestions/g' ~/.zshrc
-    sed -i .bak 's/zsh-autosuggestions$/zsh-autosuggestions\'$'\n  zsh-syntax-highlighting/g' ~/.zshrc
-    sed -i .bak 's/zsh-syntax-highlighting$/zsh-syntax-highlighting\'$'\n  zsh-kubernetes/g' ~/.zshrc
+    echo "plugins+=(zsh-syntax-highlighting)" >> ~/.zshrc
+
+    git clone git@github.com:Dbz/kube-aliases.git ~/.oh-my-zsh/custom/plugins/kube-aliases
+    echo "plugins+=(kube-aliases)" >> ~/.zshrc
+
 } || {
     echo 'Failed to configure zsh plugins'
 }
@@ -83,10 +91,9 @@ sleep 1
     brew cask install minikube
     brew cask install virtualbox
     brew cask install google-cloud-sdk
-    brew cask install homebrew/cask-versions/java8
     brew cask install ngrok
+    brew cask install zoomus
     brew install terraform
-    brew install packer
     brew install node
     brew install python
     brew install jq
@@ -102,27 +109,22 @@ sleep 1
 }
 
 # Make sure user is owner of homebrew directory
-echo "For n to work properly, you need to own homebrew stuff"
+echo "For n to work properly, you need to own homebrew stuff - setting $(whoami) as owner of $(brew --prefix)/*"
 sudo chown -R $(whoami) $(brew --prefix)/*
 
 echo "Installing n"
-sleep 1
 npm install -g n
 
 # Use the latest version of Node
 echo "Using latest version of Node"
-sleep 1
-n use latest
+n latest
 
 echo "Installing hyper term package manager and meta"
-sleep 1
 npm i -g hpm-cli meta
 
-
 # setup dev directory
-echo "Creating development directory at ~/dev"
-sleep 1
-mkdir -p ~/dev
+echo "Creating development directory at ~/Documents/dev"
+mkdir -p ~/Documents/dev
 
 # set up vscode
 echo "Configure VS Code extensions"
@@ -148,10 +150,9 @@ code --install-extension PeterJausovec.vscode-docker \
      --install-extension wmaurer.change-case
 
 # awscli and invoke - kinda like make for python
-echo "installing awscli and invoke"
+echo "installing awscli"
 sleep 1
 pip3 install awscli --upgrade --user
-pip3 install invoke
 
 echo "Copying your SSH key to your clipboard"
 pbcopy < ~/.ssh/id_rsa.pub
