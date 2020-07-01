@@ -28,7 +28,7 @@ sudo chown -R $(whoami) /usr/local/sbin
 
 echo "Making sure homebrew is up to date"
 brew update --force
-brew upgrade --cleanup
+brew upgrade
 brew doctor
 
 #  Configure Git
@@ -75,7 +75,7 @@ echo "Configuring ZSH plugins"
 # caskroom https://caskroom.github.io
 echo "Installing Brew apps"
 {
-    brew tap caskroom/cask
+    brew tap homebrew/cask
     brew tap jenkins-x/jx
     brew cask install google-chrome
     brew cask install docker
