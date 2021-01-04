@@ -18,7 +18,7 @@ if [ -x "$(command -v brew)" ]; then
     echo "✔️ Homebrew installed"
 else
     echo "Installing homebrew now..."
-    mkdir -p /usr/local/var/homebrew
+    sudo mkdir -p /usr/local/var/homebrew
     sudo chown -R $(whoami) /usr/local/var/homebrew
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi;
@@ -65,9 +65,7 @@ echo "Configuring ZSH plugins"
 {
     git clone git://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    sed -i 's/plugins=(git)/plugins=(\n  git\n)/g' ~/.zshrc
-    sed -i 's/git$/git\'$'\n  zsh-autosuggestions/g' ~/.zshrc
-    sed -i 's/zsh-autosuggestions$/zsh-autosuggestions\'$'\n  zsh-syntax-highlighting/g' ~/.zshrc
+    sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions zsh-syntax-highlighting)/g' ~/.zshrc
 } || {
     echo 'Failed to configure zsh plugins'
 }
@@ -76,19 +74,14 @@ echo "Configuring ZSH plugins"
 echo "Installing Brew apps"
 {
     brew tap homebrew/cask
-    brew tap jenkins-x/jx
-    brew cask install google-chrome
-    brew cask install docker
-    brew cask install kitematic
-    brew cask install hyper
-    brew cask install visual-studio-code
-    brew cask install vagrant
-    brew cask install spotify
-    brew cask install minikube
-    brew cask install virtualbox
-    brew cask install google-cloud-sdk
-    brew cask install ngrok
-    brew cask install zoomus
+    brew install --cask google-chrome
+    brew install --cask docker
+    brew install --cask hyper
+    brew install --cask visual-studio-code
+    brew install --cask spotify
+    brew install --cask google-cloud-sdk
+    brew install --cask ngrok
+    brew install --cask zoomus
     brew install terraform
     brew install node
     brew install python
