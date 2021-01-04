@@ -74,6 +74,7 @@ echo "Configuring ZSH plugins"
 echo "Installing Brew apps"
 {
     brew tap homebrew/cask
+    brew tap jenkins-x/jx
     brew install --cask google-chrome
     brew install --cask docker
     brew install --cask hyper
