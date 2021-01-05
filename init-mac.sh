@@ -139,9 +139,13 @@ if [ -x "$(command -v n)" ]; then
 else
     npm install -g n
     sudo mkdir -p /usr/local/n
-    sudo chown -R $(whoami) /usr/local/n
+    sudo mkdir -p /usr/local/bin
+    sudo mkdir -p /usr/local/share
+    sudo mkdir -p /usr/local/lib
+    sudo mkdir -p /usr/local/include
+
     # take ownership of node install destination folders
-    sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+    sudo chown -R $(whoami) /usr/local/n /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
     # Use the latest version of Node
     echo "Using latest version of Node"
     n latest
@@ -155,11 +159,11 @@ else
 fi;
 
 echo "Installing hyper term package manager and meta"
-npm i -g hpm-cli meta
+npm i -g meta
 
 # setup dev directory
 echo "Creating development directory at ~/Documents/dev"
-mkdir -p ~/Documents/dev
+mkdir -p ~/dev
 
 # set up vscode
 echo "Configure VS Code extensions"
@@ -191,7 +195,5 @@ echo "Add the generated SSH key to your GitHub account. It has been copied to yo
 echo "https://github.com/settings/keys"
 sleep 1
 sed -i .bak "s/shell:[[:space:]]'',$/shell: 'zsh',/g" ~/.hyper.js
-sleep 1
-echo "export PATH=\$HOME/.jx/bin/:\$PATH" >> ~/.zshrc
 sleep 1
 source ~/.zshrc
